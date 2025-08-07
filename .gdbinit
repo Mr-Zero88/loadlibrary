@@ -83,3 +83,5 @@ document trace
 Step until condition is true.
 Ex: trace "$eax != 4"
 end
+
+source ~/gdb_ghidra_bridge_client.py

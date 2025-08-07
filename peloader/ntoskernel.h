@@ -25,13 +25,14 @@
 
 typedef void (*generic_func)(void);
 
-struct wrap_export {
+struct wrap_export
+{
         const char *name;
         void *func;
 };
 
 #define WIN_SYMBOL(name, argc) {#name, (generic_func)name}
-#define WIN_WIN_SYMBOL(name, argc) {#name, (generic_func)_win_ ## name}
+#define WIN_WIN_SYMBOL(name, argc) {#name, (generic_func)_win_##name}
 #define WIN_FUNC_DECL(name, argc)
 #define WIN_FUNC_PTR(name, argc) name
 
@@ -39,69 +40,79 @@ struct wrap_export {
 /* map name s to f - if f is different from s */
 #define WIN_SYMBOL_MAP(s, f)
 
-struct ntos_work_item {
+struct ntos_work_item
+{
         struct nt_list list;
         void *arg1;
         void *arg2;
         NTOS_WORK_FUNC func;
 };
 
-struct pe_image {
-    char name[128];
-    BOOL WINAPI (*entry)(PVOID hinstDLL, DWORD fdwReason, PVOID lpvReserved);
-    void *image;
-    int size;
-    int type;
+struct pe_image
+{
+        char *name; // char name[128];
+        BOOL WINAPI (*entry)(PVOID hinstDLL, DWORD fdwReason, PVOID lpvReserved);
+        void *image;
+        size_t size;
+        int type;
 
-    IMAGE_NT_HEADERS *nt_hdr;
-    IMAGE_OPTIONAL_HEADER *opt_hdr;
+        IMAGE_NT_HEADERS *nt_hdr;
+        IMAGE_OPTIONAL_HEADER *opt_hdr;
+
+        struct pe_exports *pe_exports;
+        int num_pe_exports;
 };
 
 #define WRAP_DRIVER_CLIENT_ID 1
 
-
-enum hw_status {
-        HW_INITIALIZED = 1, HW_SUSPENDED, HW_HALTED, HW_DISABLED,
+enum hw_status
+{
+        HW_INITIALIZED = 1,
+        HW_SUSPENDED,
+        HW_HALTED,
+        HW_DISABLED,
 };
 
-#define wrap_is_pci_bus(dev_bus)                        \
-        (WRAP_BUS(dev_bus) == WRAP_PCI_BUS ||           \
+#define wrap_is_pci_bus(dev_bus)              \
+        (WRAP_BUS(dev_bus) == WRAP_PCI_BUS || \
          WRAP_BUS(dev_bus) == WRAP_PCMCIA_BUS)
 #ifdef ENABLE_USB
 /* earlier versions of ndiswrapper used 0 as USB_BUS */
-#define wrap_is_usb_bus(dev_bus)                        \
-        (WRAP_BUS(dev_bus) == WRAP_USB_BUS ||           \
+#define wrap_is_usb_bus(dev_bus)              \
+        (WRAP_BUS(dev_bus) == WRAP_USB_BUS || \
          WRAP_BUS(dev_bus) == WRAP_INTERNAL_BUS)
 #else
 #define wrap_is_usb_bus(dev_bus) 0
 #endif
-#define wrap_is_bluetooth_device(dev_bus)                       \
-        (WRAP_DEVICE(dev_bus) == WRAP_BLUETOOTH_DEVICE1 ||      \
+#define wrap_is_bluetooth_device(dev_bus)                  \
+        (WRAP_DEVICE(dev_bus) == WRAP_BLUETOOTH_DEVICE1 || \
          WRAP_DEVICE(dev_bus) == WRAP_BLUETOOTH_DEVICE2)
 
 extern struct workqueue_struct *ntos_wq;
 extern struct workqueue_struct *ndis_wq;
 extern struct workqueue_struct *wrapndis_wq;
 
-#define atomic_unary_op(var, size, oper)                                \
-do {                                                                    \
-        if (size == 1)                                                  \
-                __asm__ __volatile__(                                   \
-                        LOCK_PREFIX oper "b %b0\n\t" : "+m" (var));     \
-        else if (size == 2)                                             \
-                __asm__ __volatile__(                                   \
-                        LOCK_PREFIX oper "w %w0\n\t" : "+m" (var));     \
-        else if (size == 4)                                             \
-                __asm__ __volatile__(                                   \
-                        LOCK_PREFIX oper "l %0\n\t" : "+m" (var));      \
-        else if (size == 8)                                             \
-                __asm__ __volatile__(                                   \
-                        LOCK_PREFIX oper "q %q0\n\t" : "+m" (var));     \
-        else {                                                          \
-                extern void _invalid_op_size_(void);                    \
-                _invalid_op_size_();                                    \
-        }                                                               \
-} while (0)
+#define atomic_unary_op(var, size, oper)                               \
+        do                                                             \
+        {                                                              \
+                if (size == 1)                                         \
+                        __asm__ __volatile__(                          \
+                            LOCK_PREFIX oper "b %b0\n\t" : "+m"(var)); \
+                else if (size == 2)                                    \
+                        __asm__ __volatile__(                          \
+                            LOCK_PREFIX oper "w %w0\n\t" : "+m"(var)); \
+                else if (size == 4)                                    \
+                        __asm__ __volatile__(                          \
+                            LOCK_PREFIX oper "l %0\n\t" : "+m"(var));  \
+                else if (size == 8)                                    \
+                        __asm__ __volatile__(                          \
+                            LOCK_PREFIX oper "q %q0\n\t" : "+m"(var)); \
+                else                                                   \
+                {                                                      \
+                        extern void _invalid_op_size_(void);           \
+                        _invalid_op_size_();                           \
+                }                                                      \
+        } while (0)
 
 #define atomic_inc_var_size(var, size) atomic_unary_op(var, size, "inc")
 
@@ -111,33 +122,39 @@ do {                                                                    \
 
 #define atomic_dec_var(var) atomic_dec_var_size(var, sizeof(var))
 
-#define pre_atomic_add(var, i)                                  \
-({                                                              \
-        typeof(var) pre;                                        \
-        __asm__ __volatile__(                                   \
-                LOCK_PREFIX "xadd %0, %1\n\t"                   \
-                : "=r"(pre), "+m"(var)                          \
-                : "0"(i));                                      \
-        pre;                                                    \
-})
+#define pre_atomic_add(var, i)                    \
+        ({                                        \
+                typeof(var) pre;                  \
+                __asm__ __volatile__(             \
+                    LOCK_PREFIX "xadd %0, %1\n\t" \
+                    : "=r"(pre), "+m"(var)        \
+                    : "0"(i));                    \
+                pre;                              \
+        })
 
 #define post_atomic_add(var, i) (pre_atomic_add(var, i) + i)
 
-//#define DEBUG_IRQL 1
+// #define DEBUG_IRQL 1
 
 #ifdef DEBUG_IRQL
-#define assert_irql(cond)                                               \
-do {                                                                    \
-        KIRQL _irql_ = current_irql();                                  \
-        if (!(cond)) {                                                  \
-                WARNING("assertion '%s' failed: %d", #cond, _irql_);    \
-                DBG_BLOCK(4) {                                          \
-                        dump_stack();                                   \
-                }                                                       \
-        }                                                               \
-} while (0)
+#define assert_irql(cond)                                                    \
+        do                                                                   \
+        {                                                                    \
+                KIRQL _irql_ = current_irql();                               \
+                if (!(cond))                                                 \
+                {                                                            \
+                        WARNING("assertion '%s' failed: %d", #cond, _irql_); \
+                        DBG_BLOCK(4)                                         \
+                        {                                                    \
+                                dump_stack();                                \
+                        }                                                    \
+                }                                                            \
+        } while (0)
 #else
-#define assert_irql(cond) do { } while (0)
+#define assert_irql(cond) \
+        do                \
+        {                 \
+        } while (0)
 #endif
 
 /* When preempt is enabled, we should preempt_disable to raise IRQL to

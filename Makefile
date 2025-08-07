@@ -1,4 +1,4 @@
-CFLAGS  = -march=native -ggdb3 -std=gnu99 -fshort-wchar -Wno-multichar -Iinclude -Iintercept/include -Ilog -Ipeloader -mstackrealign -maccumulate-outgoing-args
+CFLAGS  = -fPIC -Wno-incompatible-pointer-types -Wno-attributes -march=native -ggdb3 -std=gnu99 -fshort-wchar -Wno-multichar -Iinclude -Iintercept/include -Ilog -Ipeloader -mstackrealign -maccumulate-outgoing-args
 CPPFLAGS= -D_GNU_SOURCE -I.
 LDFLAGS = $(CFLAGS) -lm -Wl,--dynamic-list=exports.lst -ldl
 LDLIBS  = -Wl,--whole-archive peloader/libpeloader.a -Wl,intercept/libhook.a -Wl,intercept/libZydis.a -Wl,intercept/libsubhook.a -Wl,--no-whole-archive
@@ -9,7 +9,7 @@ RELEASE_CFLAGS 	 = -O3
 RELEASE_CPPFLAGS = -DNDEBUG
 DEBUG_CFLAGS 	 = -O0 -g
 
-TARGETS=mpclient mpclient_x64 | peloader
+TARGETS=driver_standable | peloader
 
 all: CFLAGS += $(RELEASE_CFLAGS)
 all: CPPFLAGS += $(RELEASE_CPPFLAGS)
@@ -41,9 +41,14 @@ mpclient: CMAKE_FLAGS += -DARCH:STRING=x86
 mpclient: mpclient.o log/log.o | peloader intercept
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS) $(LDFLAGS)
 
-mpclient_x64: CFLAGS += -g -O0  -fPIC
-mpclient_x64: CMAKE_FLAGS = -DARCH:STRING=x64 -DCMAKE_BUILD_TYPE=Debug
-mpclient_x64: mpclient_x64.o log/log.o | peloader_x64 intercept
+driver_standable.so: CFLAGS += -g -O0 -shared -fPIC
+driver_standable.so: CMAKE_FLAGS = -DARCH:STRING=x64 -DCMAKE_BUILD_TYPE=Debug
+driver_standable.so: driver_standable.o log/log.o | peloader_x64 intercept
+	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS) $(LDFLAGS)
+
+driver_standable: CFLAGS += -g -O0 -fPIC
+driver_standable: CMAKE_FLAGS = -DARCH:STRING=x64 -DCMAKE_BUILD_TYPE=Debug
+driver_standable: driver_standable.o log/log.o | peloader_x64 intercept
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS) $(LDFLAGS)
 
 test_seh: CFLAGS += -g -O0  -fPIC

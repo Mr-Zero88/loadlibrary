@@ -1,4 +1,4 @@
-CFLAGS    	 = -march=native -ggdb3 -std=gnu99 -fshort-wchar -fno-omit-frame-pointer -Wno-multichar -I../include -I../log -mstackrealign -maccumulate-outgoing-args
+CFLAGS    	 = -shared -fPIC -Wno-attributes -Wno-int-conversion -march=native -ggdb3 -std=gnu99 -fshort-wchar -fno-omit-frame-pointer -Wno-multichar -I../include -I../log -mstackrealign -maccumulate-outgoing-args
 CPPFLAGS  	 = -D_GNU_SOURCE -I. -I../intercept/include
 LDFLAGS   	 = $(CFLAGS) -lm
 ARCH	  	 = x64

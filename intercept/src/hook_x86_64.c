@@ -20,7 +20,8 @@
 
 ZydisDecoder decoder;
 
-static void __attribute__((constructor(100))) init(void) {
+static void __attribute__((constructor(100))) init(void)
+{
     // Initialize Zydis disassemble
     ZydisDecoderInit(&decoder, ZYDIS_MACHINE_MODE_LONG_64, ZYDIS_ADDRESS_WIDTH_64);
 }
@@ -28,15 +29,18 @@ static void __attribute__((constructor(100))) init(void) {
 /* Disassemble a buffer until max_size is reached. If no branch instructions have been found
  * returns the total amount of disassembled bytes.
  */
-bool disassemble(void *buffer, uint32_t *total_disassembled, ulong max_size, uint32_t flags) {
+bool disassemble(void *buffer, uint32_t *total_disassembled, ulong max_size, uint32_t flags)
+{
     ZyanUSize offset = 0;
     unsigned insncount = 0;
 
-    for (*total_disassembled = 0; *total_disassembled < max_size; insncount++) {
+    for (*total_disassembled = 0; *total_disassembled < max_size; insncount++)
+    {
         ZydisDecodedInstruction instruction;
 
         // Test if Zydis understood the instruction
-        if (ZYAN_SUCCESS(ZydisDecoderDecodeBuffer(&decoder, buffer + offset, max_size, &instruction))) {
+        if (ZYAN_SUCCESS(ZydisDecoderDecodeBuffer(&decoder, buffer + offset, max_size, &instruction)))
+        {
             // Valid, increment size.
             *total_disassembled += instruction.length;
 
@@ -47,7 +51,8 @@ bool disassemble(void *buffer, uint32_t *total_disassembled, ulong max_size, uin
                  instruction.meta.category == ZYDIS_CATEGORY_COND_BR ||
                  instruction.meta.category == ZYDIS_CATEGORY_UNCOND_BR ||
                  instruction.meta.category == ZYDIS_CATEGORY_RET) &&
-                flags != HOOK_REPLACE_FUNCTION) {
+                flags != HOOK_REPLACE_FUNCTION)
+            {
                 l_error("Refusing to redirect function %p due to early controlflow manipulation (total bytes disassembled: +%u)",
                         buffer,
                         *total_disassembled);
@@ -89,7 +94,8 @@ bool disassemble(void *buffer, uint32_t *total_disassembled, ulong max_size, uin
 //      [code]
 // }
 
-subhook_t insert_function_redirect(void *function, void *redirect, uint32_t flags) {
+subhook_t insert_function_redirect(void *function, void *redirect, uint32_t flags)
+{
     uint32_t redirect_size = 0;
     void *fixup_area;
     mov_r64_abs_insn *movabs;
@@ -121,9 +127,10 @@ subhook_t insert_function_redirect(void *function, void *redirect, uint32_t flag
     //
 
     fixup_area = calloc(sizeof(mov_r64_abs_insn) +
-                        branch_size +
-                        redirect_size +
-                        jmp64_size, 1);
+                            branch_size +
+                            redirect_size +
+                            jmp64_size,
+                        1);
 
     /* This moves the address of the redirect function in the r11 register
      * [addr+0x0]:      movabs r11, *redirect
@@ -131,37 +138,50 @@ subhook_t insert_function_redirect(void *function, void *redirect, uint32_t flag
     movabs = fixup_area;
     movabs->opcode = X86_64_OPCODE_MOV_ABS_R64;
     movabs->reg = 0xBB; // r11
-    movabs->imm.i = redirect;
+    movabs->imm.i = (long unsigned int)redirect;
 
     // Create a call or a subhook jump
-    if (flags == HOOK_DEFAULT) {
+    if (flags == HOOK_DEFAULT)
+    {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types"
         branch = &movabs->data;
+#pragma GCC diagnostic pop
         branch->opcode = X86_64_OPCODE_CALL_REG;
         branch->reg = 0xD3; // r11
-        clobbered_code_offset = (uintptr_t) & branch->data;
-    } else {
+        clobbered_code_offset = (uintptr_t)&branch->data;
+    }
+    else
+    {
         subhook_t hook = subhook_new(&movabs->data, redirect, SUBHOOK_64BIT_OFFSET);
-        if (subhook_install(hook) != 0) {
+        if (subhook_install(hook) != 0)
+        {
             l_error("Cannot install the jmp to the redirect.");
             return NULL;
         }
-        clobbered_code_offset = (uintptr_t) & movabs->data + jmp64_size;
+        clobbered_code_offset = (uintptr_t)&movabs->data + jmp64_size;
     }
 
     // Copy over the code we are going to clobber by installing the redirect.
-    memcpy((void *) clobbered_code_offset, function, redirect_size);
+    memcpy((void *)clobbered_code_offset, function, redirect_size);
 
     // And install a branch to restore execution to the rest of the original routine.
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wint-conversion"
     subhook_t restore_hook = subhook_new(clobbered_code_offset + redirect_size,
                                          function + redirect_size,
                                          SUBHOOK_64BIT_OFFSET);
-    if (subhook_install(restore_hook) != 0) {
+#pragma GCC diagnostic pop
+    if (subhook_install(restore_hook) != 0)
+    {
         l_error("Cannot the jmp to restore the execution.");
         return NULL;
     }
 
     // Fix permissions on the redirect.
-    if (mprotect((void *) ((uintptr_t) fixup_area & PAGE_MASK), PAGE_SIZE, PROT_READ | PROT_WRITE | PROT_EXEC) != 0) {
+    if (mprotect((void *)((uintptr_t)fixup_area & PAGE_MASK), PAGE_SIZE, PROT_READ | PROT_WRITE | PROT_EXEC) != 0)
+    {
         printf("mprotect() failed on stub => %p (%m), try `sudo setenforce 0`\n", fixup_area);
         return NULL;
     }
@@ -169,7 +189,8 @@ subhook_t insert_function_redirect(void *function, void *redirect, uint32_t flag
     // Now I need to install the redirect, I also clobber any left over bytes
     // with x86 nops, so as not to disrupt disassemblers while debugging.
     subhook_t hook = subhook_new(function, fixup_area, SUBHOOK_64BIT_OFFSET);
-    if (subhook_install(hook) != 0) {
+    if (subhook_install(hook) != 0)
+    {
         l_error("Cannot install redirect.");
         return NULL;
     }
@@ -185,13 +206,16 @@ subhook_t insert_function_redirect(void *function, void *redirect, uint32_t flag
 }
 
 // TODO: implement it
-bool redirect_call_within_function(void *function, void *target, void *redirect) {
+bool redirect_call_within_function(void *function, void *target, void *redirect)
+{
     l_error("Not implemented.");
     return false;
 }
 
-bool remove_function_redirect(subhook_t hook) {
-    if (subhook_remove(hook) != 0) {
+bool remove_function_redirect(subhook_t hook)
+{
+    if (subhook_remove(hook) != 0)
+    {
         l_error("Cannot remove the hook.");
         return false;
     }

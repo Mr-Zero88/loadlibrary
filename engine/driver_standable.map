@@ -1,0 +1,427 @@
+
+ Start         Length     Name                   Class
+ 0002:0000000000000000 000000000000326BFH .text                  CODE
+ 0003:0000000000000000 00000000000008C64H .rdata                 DATA
+ 0004:0000000000000000 0000000000000CEA0H .data                  DATA
+ 0005:0000000000000000 00000000000001524H .pdata                 DATA
+ 0006:0000000000000000 000000000000001E0H .rsrc                  DATA
+
+
+  Address         Publics by Value
+
+ 00000001:0000000000000B20       Concurrency::agent::~agent(void)
+ 00000001:0000000000000C00       std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char>>::`scalar deleting destructor'(uint)
+ 00000001:0000000000000CE0       unknown_libname_6
+ 00000001:00000000000010D0       Concurrency::cancel_current_task(void)
+ 00000001:00000000000010F0       std::vector<void *,std::allocator<void *>>::_Xlen(void)
+ 00000001:00000000000015C0       std::allocator<char>::deallocate(char * const,unsigned __int64)
+ 00000001:00000000000034B0       StartAddress
+ 00000001:0000000000008440       _guard_check_icall_nop
+ 00000001:000000000000F390       std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Deallocate_for_capacity(std::allocator<char> &,char * const,unsigned __int64)
+ 00000001:000000000000F6E0       Concurrency::cancel_current_task(void)
+ 00000001:000000000000F720       std::vector<void *,std::allocator<void *>>::_Xlen(void)
+ 00000001:000000000000F740       std::vector<void *,std::allocator<void *>>::_Xlen(void)
+ 00000001:0000000000015460       HmdDriverFactory
+ 00000001:0000000000018490       std::vector<void *,std::allocator<void *>>::_Xlen(void)
+ 00000001:000000000001B430       swprintf
+ 00000001:000000000002FFE1       MH_Initialize
+ 00000001:000000000002FFE7       MH_Uninitialize
+ 00000001:000000000002FFED       MH_CreateHook
+ 00000001:000000000002FFF3       MH_EnableHook
+ 00000001:000000000002FFF9       MH_DisableHook
+ 00000001:000000000002FFFF       std::_Xbad_alloc(void)
+ 00000001:0000000000030005       std::_Xlength_error(char const *)
+ 00000001:000000000003000B       std::_Xout_of_range(char const *)
+ 00000001:0000000000030011       std::uncaught_exception(void)
+ 00000001:0000000000030017       _Xtime_get_ticks
+ 00000001:000000000003001D       std::basic_streambuf<char,std::char_traits<char>>::~basic_streambuf<char,std::char_traits<char>>(void)
+ 00000001:0000000000030023       std::setw(__int64)
+ 00000001:0000000000030029       std::basic_streambuf<char,std::char_traits<char>>::imbue(std::locale const &)
+ 00000001:000000000003002F       std::basic_streambuf<char,std::char_traits<char>>::sync(void)
+ 00000001:0000000000030035       std::basic_streambuf<char,std::char_traits<char>>::setbuf(char *,__int64)
+ 00000001:000000000003003B       std::basic_streambuf<char,std::char_traits<char>>::xsputn(char const *,__int64)
+ 00000001:0000000000030041       std::basic_streambuf<char,std::char_traits<char>>::xsgetn(char *,__int64)
+ 00000001:0000000000030047       std::basic_streambuf<char,std::char_traits<char>>::uflow(void)
+ 00000001:000000000003004D       std::basic_streambuf<char,std::char_traits<char>>::showmanyc(void)
+ 00000001:0000000000030053       std::basic_streambuf<char,std::char_traits<char>>::_Unlock(void)
+ 00000001:0000000000030059       std::basic_streambuf<char,std::char_traits<char>>::_Lock(void)
+ 00000001:000000000003005F       std::_Lockit::~_Lockit(void)
+ 00000001:0000000000030070       unknown_libname_7
+ 00000001:0000000000030116       std::_Xinvalid_argument(char const *)
+ 00000001:000000000003011C       _Query_perf_counter
+ 00000001:0000000000030122       _Query_perf_frequency
+ 00000001:0000000000030128       _Thrd_join
+ 00000001:000000000003012E       _Thrd_sleep
+ 00000001:0000000000030134       _Thrd_id
+ 00000001:000000000003013A       _Cnd_do_broadcast_at_thread_exit
+ 00000001:0000000000030140       std::_Throw_Cpp_error(int)
+ 00000001:0000000000030148       std::_Facet_Register(std::_Facet_base *)
+ 00000001:0000000000030180       std::locale::_Getgloballocale(void)
+ 00000001:0000000000030186       std::_Fiopen(char const *,int,int)
+ 00000001:000000000003018C       std::_Random_device(void)
+ 00000001:0000000000030194       operator new(unsigned __int64)
+ 00000001:00000000000301D0       j_j_free
+ 00000001:00000000000301D8       __GSHandlerCheck
+ 00000001:00000000000301F8       __GSHandlerCheckCommon
+ 00000001:0000000000030254       __GSHandlerCheck_EH4
+ 00000001:00000000000302F0       __security_check_cookie
+ 00000001:0000000000030305       RestoreRcx
+ 00000001:0000000000030309       ReportFailure
+ 00000001:000000000003033C       `eh vector destructor iterator'(void *,unsigned __int64,unsigned __int64,void (*)(void *))
+ 00000001:00000000000303A8       __ArrayUnwind(void *,unsigned __int64,unsigned __int64,void (*)(void *))
+ 00000001:0000000000030420       __alloca_probe
+ 00000001:0000000000030450       cs10
+ 00000001:0000000000030460       cs20
+ 00000001:0000000000030470       operator new(unsigned __int64)
+ 00000001:0000000000030478       __scrt_acquire_startup_lock
+ 00000001:00000000000304B4       __scrt_dllmain_after_initialize_c
+ 00000001:00000000000304E8       __scrt_dllmain_before_initialize_c
+ 00000001:0000000000030528       __scrt_dllmain_crt_thread_detach
+ 00000001:0000000000030540       __scrt_dllmain_exception_filter
+ 00000001:00000000000305A0       __scrt_dllmain_uninitialize_c
+ 00000001:00000000000305D0       __scrt_dllmain_uninitialize_critical
+ 00000001:00000000000305E4       __scrt_initialize_crt
+ 00000001:0000000000030620       __scrt_initialize_onexit_tables
+ 00000001:00000000000306AC       __scrt_is_nonwritable_in_current_image
+ 00000001:0000000000030744       __scrt_release_startup_lock
+ 00000001:0000000000030768       __scrt_uninitialize_crt
+ 00000001:0000000000030794       _onexit
+ 00000001:00000000000307D0       atexit
+ 00000001:00000000000307E8       dllmain_crt_dispatch(HINSTANCE__ * const,ulong,void * const)
+ 00000001:0000000000030838       dllmain_crt_process_attach(HINSTANCE__ * const,void * const)
+ 00000001:0000000000030950       dllmain_crt_process_detach(bool)
+ 00000001:00000000000309D0       dllmain_dispatch(HINSTANCE__ * const,ulong,void * const)
+ 00000001:0000000000030AEB       $LN16
+ 00000001:0000000000030B04       DllEntryPoint
+ 00000001:0000000000030B44       __isa_available_init
+ 00000001:0000000000030D10       Concurrency::cancel_current_task(void)
+ 00000001:0000000000030D30       j_free
+ 00000001:0000000000030D38       __raise_securityfailure
+ 00000001:0000000000030D6C       __report_gsfailure
+ 00000001:0000000000030E40       capture_previous_context
+ 00000001:0000000000030EB4       charNode::raw_length(void)
+ 00000001:0000000000030EBC       __uncaught_exception(void)
+ 00000001:0000000000030ED0       __scrt_fastfail
+ 00000001:0000000000031018       __security_init_cookie
+ 00000001:00000000000310C4       DllMain
+ 00000001:000000000003110C       __scrt_initialize_default_local_stdio_options
+ 00000001:00000000000311B0       __std_terminate
+ 00000001:00000000000311B6       __std_exception_copy
+ 00000001:00000000000311BC       __std_exception_destroy
+ 00000001:00000000000311C2       _CxxThrowException
+ 00000001:00000000000311C8       __CxxFrameHandler4
+ 00000001:00000000000311CE       memchr
+ 00000001:00000000000311D4       memcmp
+ 00000001:00000000000311DA       memcpy
+ 00000001:00000000000311E0       memmove
+ 00000001:00000000000311E6       memset
+ 00000001:00000000000311EC       __current_exception
+ 00000001:00000000000311F2       __current_exception_context
+ 00000001:00000000000311F8       __C_specific_handler
+ 00000001:00000000000311FE       __std_type_info_destroy_list
+ 00000001:0000000000031204       terminate
+ 00000001:000000000003120A       ceilf
+ 00000001:0000000000031210       copysign
+ 00000001:0000000000031216       sqrt
+ 00000001:000000000003121C       roundf
+ 00000001:0000000000031222       acosf
+ 00000001:0000000000031228       asinf
+ 00000001:000000000003122E       atan2f
+ 00000001:0000000000031234       atanf
+ 00000001:000000000003123A       cos
+ 00000001:0000000000031240       cosf
+ 00000001:0000000000031246       pow
+ 00000001:000000000003124C       sin
+ 00000001:0000000000031252       sinf
+ 00000001:0000000000031258       sqrtf
+ 00000001:000000000003125E       powf
+ 00000001:0000000000031264       _callnewh
+ 00000001:000000000003126A       malloc
+ 00000001:0000000000031270       _seh_filter_dll
+ 00000001:0000000000031276       _configure_narrow_argv
+ 00000001:000000000003127C       _initialize_narrow_environment
+ 00000001:0000000000031282       _initialize_onexit_table
+ 00000001:0000000000031288       _register_onexit_function
+ 00000001:000000000003128E       _execute_onexit_table
+ 00000001:0000000000031294       _crt_atexit
+ 00000001:000000000003129A       _cexit
+ 00000001:00000000000312A0       _initterm
+ 00000001:00000000000312A6       _initterm_e
+ 00000001:00000000000312AC       free
+ 00000001:00000000000312D0       _guard_dispatch_icall_nop
+ 00000001:00000000000312F0       _guard_xfg_dispatch_icall_nop
+ 00000001:0000000000031300       int `__acrt_get_current_directory<__crt_win32_buffer_internal_dynamic_resizing>(__crt_win32_buffer<char,__crt_win32_buffer_internal_dynamic_resizing> &)'::`1'::dtor$0
+ 00000001:0000000000031310       int `__acrt_get_current_directory<__crt_win32_buffer_internal_dynamic_resizing>(__crt_win32_buffer<char,__crt_win32_buffer_internal_dynamic_resizing> &)'::`1'::dtor$0
+ 00000001:0000000000031380       int `_wcrtomb_s_l(int * const,char * const,unsigned __int64,wchar_t,_Mbstatet * const,__crt_locale_pointers * const)'::`1'::dtor$0
+ 00000001:0000000000031570       int `_wcrtomb_s_l(int * const,char * const,unsigned __int64,wchar_t,_Mbstatet * const,__crt_locale_pointers * const)'::`1'::dtor$0
+ 00000001:0000000000031680       unknown_libname_1
+ 00000001:00000000000317E0       int `_Fac_tidy(void)'::`1'::dtor$0
+ 00000001:00000000000317F0       int `_wcrtomb_s_l(int * const,char * const,unsigned __int64,wchar_t,_Mbstatet * const,__crt_locale_pointers * const)'::`1'::dtor$0
+ 00000001:0000000000031890       int `_wcstombs_l_helper(char *,wchar_t const *,unsigned __int64,__crt_locale_pointers *)'::`1'::dtor$0
+ 00000001:00000000000318A0       unknown_libname_2
+ 00000001:0000000000031940       unknown_libname_3
+ 00000001:00000000000319A0       int `std::locale::name(void)'::`1'::dtor$0
+ 00000001:0000000000031B20       int `std::money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::do_get(money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::std,money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::std,bool,money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::ios_base &,int &,long double &)'::`1'::dtor$0
+ 00000001:0000000000031B30       int `std::money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::do_get(money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::std,money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::std,bool,money_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::ios_base &,int &,long double &)'::`1'::dtor$1
+ 00000001:0000000000031B50       int `std::money_put<wchar_t,std::ostreambuf_iterator<wchar_t,std::char_traits<wchar_t>>>::do_put(money_put<wchar_t,std::ostreambuf_iterator<wchar_t,std::char_traits<wchar_t>>>::std,bool,money_put<wchar_t,std::ostreambuf_iterator<wchar_t,std::char_traits<wchar_t>>>::ios_base &,wchar_t,long double)'::`1'::dtor$0
+ 00000001:0000000000031BA0       unknown_libname_9
+ 00000001:0000000000031D20       unknown_libname_10
+ 00000001:0000000000031D60       int `__acrt_get_current_directory<__crt_win32_buffer_internal_dynamic_resizing>(__crt_win32_buffer<char,__crt_win32_buffer_internal_dynamic_resizing> &)'::`1'::dtor$0
+ 00000001:0000000000031D70       int `_wcrtomb_s_l(int * const,char * const,unsigned __int64,wchar_t,_Mbstatet * const,__crt_locale_pointers * const)'::`1'::dtor$0
+ 00000001:0000000000031D80       int `_wcrtomb_s_l(int * const,char * const,unsigned __int64,wchar_t,_Mbstatet * const,__crt_locale_pointers * const)'::`1'::dtor$0
+ 00000001:0000000000031DA0       int `std::collate<char>::do_transform(char const *,char const *)'::`1'::dtor$0
+ 00000001:0000000000031DD0       int `_wcstombs_l_helper(char *,wchar_t const *,unsigned __int64,__crt_locale_pointers *)'::`1'::dtor$0
+ 00000001:0000000000031DF0       int `_wcrtomb_s_l(int * const,char * const,unsigned __int64,wchar_t,_Mbstatet * const,__crt_locale_pointers * const)'::`1'::dtor$0
+ 00000001:0000000000031E70       int `std::collate<ushort>::do_transform(ushort const *,ushort const *)'::`1'::dtor$0
+ 00000001:00000000000320C0       unknown_libname_12
+ 00000001:00000000000320D0       int `std::time_put<char,std::ostreambuf_iterator<char,std::char_traits<char>>>::do_put(time_put<char,std::ostreambuf_iterator<char,std::char_traits<char>>>::std,time_put<char,std::ostreambuf_iterator<char,std::char_traits<char>>>::ios_base &,char,tm const *,char,char)'::`1'::dtor$0
+ 00000001:00000000000321B0       int `__acrt_get_current_directory<__crt_win32_buffer_internal_dynamic_resizing>(__crt_win32_buffer<char,__crt_win32_buffer_internal_dynamic_resizing> &)'::`1'::dtor$0
+ 00000001:00000000000322D0       unknown_libname_4
+ 00000001:0000000000032420       int `__acrt_get_current_directory<__crt_win32_buffer_internal_dynamic_resizing>(__crt_win32_buffer<char,__crt_win32_buffer_internal_dynamic_resizing> &)'::`1'::dtor$0
+ 00000001:0000000000032430       int `std::locale::name(void)'::`1'::dtor$0
+ 00000001:0000000000032470       unknown_libname_5
+ 00000001:00000000000324CC       int ``eh vector destructor iterator'(void *,unsigned __int64,unsigned __int64,void (*)(void *))'::`1'::fin$0
+ 00000001:00000000000324F8       int `__ArrayUnwind(void *,unsigned __int64,unsigned __int64,void (*)(void *))'::`1'::filt$0
+ 00000001:0000000000032557       __scrt_is_nonwritable_in_current_image$filt$0
+ 00000001:000000000003256F       int `dllmain_crt_process_attach(HINSTANCE__ * const,void * const)'::`1'::fin$0
+ 00000001:0000000000032586       int `dllmain_crt_process_detach(bool)'::`1'::fin$0
+ 00000001:000000000003259F       _onexit$fin$0
+ 00000001:00000000000325B3       int `dllmain_dispatch(HINSTANCE__ * const,ulong,void * const)'::`1'::filt$0
+ 00000001:0000000000032664       unknown_libname_13
+ 00000002:00000000000006F0       __guard_check_icall_fptr
+ 00000002:00000000000006F8       __guard_xfg_check_icall_fptr
+ 00000002:0000000000000700       __guard_dispatch_icall_fptr
+ 00000002:0000000000000708       __guard_xfg_dispatch_icall_fptr
+ 00000002:0000000000000710       __guard_xfg_table_dispatch_icall_fptr
+ 00000002:0000000000000718       __castguard_check_failure_os_handled_fptr
+ 00000002:0000000000000798       First
+ 00000002:00000000000007A0       Last
+ 00000002:00000000000007E0       aItrackeddevice
+ 00000002:0000000000000800       aIvrdisplaycomp
+ 00000002:0000000000000818       aIvrdriverdirec
+ 00000002:0000000000000840       aIvrcameracompo
+ 00000002:0000000000000858       aIservertracked
+ 00000002:0000000000000880       aIvrwatchdogpro
+ 00000002:0000000000000898       aIvrcompositorp
+ 00000002:00000000000008D8       aIvrdriverlog00
+ 00000002:00000000000008F0       aIvrserverdrive_0
+ 00000002:0000000000000908       aIvrvirtualdisp
+ 00000002:0000000000000920       aIvrresources00
+ 00000002:0000000000000938       aIvrdrivermanag
+ 00000002:0000000000000950       aIvrsettings003
+ 00000002:0000000000000980       aUnknownExcepti
+ 00000002:00000000000009C8       aBadArrayNewLen
+ 00000002:00000000000009E0       aStringTooLong
+ 00000002:0000000000000A90       ModuleName
+ 00000002:0000000000000AD0       aFailedToLaunch
+ 00000002:0000000000000B00       Name
+ 00000002:0000000000000B20       aFailedToCreate
+ 00000002:0000000000000B40       aFailedToConnec
+ 00000002:0000000000000B60       aInvalidStringP
+ 00000002:0000000000000BB0       aSDebugWsastart
+ 00000002:0000000000000BCC       pServiceName
+ 00000002:0000000000000BD8       pNodeName
+ 00000002:0000000000000BE8       aSDebugGetaddri
+ 00000002:0000000000000C08       aSDebugErrorAtS
+ 00000002:0000000000000C28       aSDebugUnableTo
+ 00000002:0000000000000C50       aSDebugMatrixDa
+ 00000002:0000000000000C80       aSDebugFloatDat
+ 00000002:0000000000000CB0       aSDebugShutdown
+ 00000002:0000000000000D10       aInvalidStofArg
+ 00000002:0000000000000D28       aStofArgumentOu
+ 00000002:0000000000000D48       aIvrproperties0
+ 00000002:0000000000000DA8       aBadCast
+ 00000002:0000000000000DB8       aSelectcountMus
+ 00000002:0000000000000EE0       aStndblHandstan
+ 00000002:0000000000000F38       aStndblSeductiv
+ 00000002:0000000000000FB0       aStndblKickdanc
+ 00000002:0000000000001008       aHips
+ 00000002:0000000000001010       aSfbepelvis
+ 00000002:0000000000001020       aLeftFoot
+ 00000002:0000000000001030       aSfbefoot
+ 00000002:0000000000001040       aRightFoot
+ 00000002:0000000000001058       aSfbechest
+ 00000002:0000000000001068       aLeftElbow
+ 00000002:0000000000001078       aSfbeelbow
+ 00000002:0000000000001088       aRightElbow
+ 00000002:0000000000001098       aLeftKnee
+ 00000002:00000000000010A8       aSfbeknee
+ 00000002:00000000000010B8       aRightKnee
+ 00000002:00000000000010C8       aAddingProxyTra
+ 00000002:00000000000010E0       aStartingInitil
+ 00000002:0000000000001110       aEyelevel
+ 00000002:0000000000001120       aInitialzingSta
+ 00000002:0000000000001160       aLoadingFloorOf
+ 00000002:0000000000001178       aLoadingPlatfor
+ 00000002:00000000000011A8       aShuttingDownSt
+ 00000002:0000000000001258       aSettingGuessed
+ 00000002:0000000000001280       aControllersTot
+ 00000002:0000000000001294       aFound
+ 00000002:00000000000012A0       aLeftController
+ 00000002:00000000000012B8       aRightControlle
+ 00000002:00000000000012D0       aControllerPair
+ 00000002:00000000000012F0       aWarningMoreTha
+ 00000002:0000000000001358       aResortingContr
+ 00000002:0000000000001378       aResortedContro
+ 00000002:00000000000013A0       aCannotResortCo
+ 00000002:00000000000013E0       aWaitingForHmd
+ 00000002:00000000000014A8       aLookingForBase
+ 00000002:00000000000014D0       aChaperonePath
+ 00000002:0000000000001510       aBaseFloor
+ 00000002:0000000000001520       aFailedToFindTr
+ 00000002:0000000000001550       aFailedToFindSt
+ 00000002:0000000000001580       aFailedToReadCh
+ 00000002:00000000000015C0       a1Deltatime
+ 00000002:00000000000015D0       aAuthenticating
+ 00000002:00000000000015F0       aAuthentication
+ 00000002:0000000000001608       aAuthentication_0
+ 00000002:0000000000001638       aExitCalibratio
+ 00000002:0000000000001650       aEyeLevel
+ 00000002:0000000000001668       aEnterCalibrati
+ 00000002:0000000000001730       aTPoseCalibrati
+ 00000002:0000000000001748       aTPoseCalibrati_0
+ 00000002:00000000000017E8       aLaySpread
+ 00000002:00000000000017F8       aSeatDepth
+ 00000002:0000000000001808       aSeatSpread
+ 00000002:0000000000001818       aCrossPreferenc
+ 00000002:0000000000001830       aAdvancedChest
+ 00000002:0000000000001840       aSeatEstimation
+ 00000002:0000000000001850       aElbowRollOffse
+ 00000002:0000000000001868       aBasicSmoothing
+ 00000002:0000000000001878       aStanceAdjustme
+ 00000002:0000000000001898       aRotationAdjust
+ 00000002:00000000000018B8       aDepthAdjustmen
+ 00000002:00000000000018D8       aPushToRealign
+ 00000002:00000000000018E8       aNoStickMode
+ 00000002:00000000000018F8       aDoubleTapToggl
+ 00000002:0000000000001910       aValueFloor
+ 00000002:0000000000001920       aCalibrationUse
+ 00000002:0000000000001940       aCalibratingFlo
+ 00000002:0000000000001958       aStaticDeltatim
+ 00000002:0000000000001970       aLogDebugMessag
+ 00000002:0000000000001988       aAutoDetectVdIs
+ 00000002:00000000000019A0       aControllerIdOf
+ 00000002:00000000000019B8       aUseProxyTracke
+ 00000002:00000000000019D0       aPreserveTracke
+ 00000002:00000000000019E8       aDisableVelocit
+ 00000002:0000000000001A00       aDebugModels
+ 00000002:0000000000001A10       aTrackingStatus
+ 00000002:0000000000001A20       aDistance
+ 00000002:0000000000001A30       aCompleteTracki
+ 00000002:0000000000001A48       aFallbackBlendS
+ 00000002:0000000000001A60       aStartFallbackP
+ 00000002:0000000000001A78       aEndFallbackPad
+ 00000002:0000000000001A90       aHipSwayAmount
+ 00000002:0000000000001AA0       aHipCounterbala
+ 00000002:0000000000001AB8       aPencilPose
+ 00000002:0000000000001AC8       aHideDeviceSeri
+ 00000002:0000000000001AE0       aNeckLength
+ 00000002:0000000000001AF0       aLegLength
+ 00000002:0000000000001B00       aShoulderWidth
+ 00000002:0000000000001B10       aHipWidth
+ 00000002:0000000000001B20       aArmLength
+ 00000002:0000000000001B30       aTorsoLength
+ 00000002:0000000000001B40       aUserHeight
+ 00000002:0000000000001B50       aUpdatedFloorOf
+ 00000002:0000000000001B70       aUpdatedPlatfor
+ 00000002:0000000000001B98       aAutoLeaveBed
+ 00000002:0000000000001BA8       aSeatEstimation_0
+ 00000002:0000000000001BD0       aExperimentalLe
+ 00000002:0000000000001BE8       aForceSaveProfi
+ 00000002:0000000000001C00       aForcingProfile
+ 00000002:0000000000001C18       aVectorTooLong
+ 00000002:0000000000001C28       aUnorderedMapSe
+ 00000002:0000000000001C48       aInvalidHashBuc
+ 00000002:0000000000001CE8       Y
+ 00000002:0000000000001DA0       aAttemptingHook
+ 00000002:0000000000001DB8       aErrorFailedToI
+ 00000002:0000000000001DE0       aErrorFailedToG
+ 00000002:0000000000001E08       aIvrserverdrive
+ 00000002:0000000000001E20       aErrorFailedToC
+ 00000002:0000000000001E50       aErrorFailedToC_0
+ 00000002:0000000000001E80       aErrorUnsupport
+ 00000002:0000000000001EA8       aErrorFailedToE
+ 00000002:0000000000001EC8       aHookSuccessful
+ 00000002:0000000000001ED8       aErrorFailedToD
+ 00000002:0000000000001EF8       aErrorFailedToU
+ 00000002:0000000000001FEC       aWav
+ 00000002:0000000000002070       aFalse
+ 00000002:0000000000002078       aTrue
+ 00000002:0000000000002080       Format
+ 00000002:0000000000002088       aMapSetTooLong
+ 00000002:00000000000020A0       aFailedToOpenSe
+ 00000002:00000000000020D8       aFailedToOpenSe_0
+ 00000002:0000000000002108       aFailedToOpenSe_1
+ 00000002:0000000000002138       aFailedToConver_0
+ 00000002:000000000000215C       aTrue_0
+ 00000002:0000000000002164       aFalse_0
+ 00000002:000000000000216C       aTrue_1
+ 00000002:0000000000002174       aFalse_1
+ 00000002:0000000000002180       aFailedToConver
+ 00000002:00000000000021B0       SubKey
+ 00000002:00000000000021C8       ValueName
+ 00000002:00000000000021D8       aFailedToReadSt
+ 00000002:0000000000002208       aFailedToOpenRe
+ 00000002:0000000000002230       aConfigChaperon
+ 00000002:00000000000022E8       aDebug
+ 00000002:0000000000002330       aThreedof
+ 00000002:0000000000002340       aFallback
+ 00000002:0000000000002370       aSfbetracker
+ 00000002:0000000000002380       aViveTracker
+ 00000002:0000000000002510       X
+ 00000002:0000000000002638       aBadAllocation
+ 00000002:0000000000002648       ExceptionInfo
+ 00000002:0000000000002660       _load_config_used
+ 00000002:00000000000034BC       __volatile_metadata
+ 00000002:00000000000063E8       pThrowInfo
+ 00000002:0000000000006602       aDriverStandabl
+ 00000002:0000000000006617       aHmddriverfacto
+ 00000002:0000000000006628       __IMPORT_DESCRIPTOR_minhook_x64
+ 00000002:000000000000663C       __IMPORT_DESCRIPTOR_KERNEL32
+ 00000002:0000000000006650       __IMPORT_DESCRIPTOR_ADVAPI32
+ 00000002:0000000000006664       __IMPORT_DESCRIPTOR_MSVCP140
+ 00000002:0000000000006678       __IMPORT_DESCRIPTOR_WS2_32
+ 00000002:000000000000668C       __IMPORT_DESCRIPTOR_WINMM
+ 00000002:00000000000066A0       __IMPORT_DESCRIPTOR_VCRUNTIME140
+ 00000002:00000000000066B4       __IMPORT_DESCRIPTOR_VCRUNTIME140_1
+ 00000002:0000000000006EC4       aMinhookX64Dll
+ 00000002:0000000000006F6E       aKernel32Dll
+ 00000002:0000000000006FAE       aAdvapi32Dll
+ 00000002:00000000000085B4       aMsvcp140Dll
+ 00000002:00000000000085E0       aWs232Dll
+ 00000002:00000000000085FA       aWinmmDll
+ 00000002:0000000000008712       aVcruntime140Dl
+ 00000002:0000000000008724       aVcruntime1401D
+ 00000002:0000000000008A06       aApiMsWinCrtRun
+ 00000002:0000000000008A28       aApiMsWinCrtHea
+ 00000002:0000000000008A48       aApiMsWinCrtTim
+ 00000002:0000000000008A68       aApiMsWinCrtStd
+ 00000002:0000000000008A88       aApiMsWinCrtFil
+ 00000002:0000000000008AAE       aApiMsWinCrtCon
+ 00000002:0000000000008AD0       aApiMsWinCrtMat
+ 00000002:0000000000008AF0       aApiMsWinCrtUti
+ 00000003:0000000000000550       Buf2
+ 00000003:0000000000000560       Size
+ 00000003:0000000000000640       __security_cookie
+ 00000003:0000000000000720       aAvexceptionStd
+ 00000003:0000000000000770       aAvinvalidArgum
+ 00000003:00000000000007A0       aAvlogicErrorSt
+ 00000003:00000000000007D0       aAvBasicStringb
+ 00000003:0000000000000830       aAvBasicStreamb
+ 00000003:0000000000000880       aAvBasicStrings
+ 00000003:00000000000008E0       aAvBasicIostrea
+ 00000003:0000000000000930       aAvBasicIstream
+ 00000003:00000000000009E0       aAvIosbHStd
+ 00000003:0000000000000A10       aAvBasicOstream
+ 00000003:0000000000000A60       aAvBasicOstring
+ 00000003:0000000000000AC0       aAvBasicIstring
+ 00000003:0000000000000B20       aAvBasicFilebuf
+ 00000003:0000000000000B70       aAvBasicIfstrea
+ 00000003:0000000000000BF0       aAvdeviceprovid
+ 00000003:0000000000000C20       aAvBasicOfstrea
+ 00000003:0000000000000CA0       aAvtrackerdevic
+ 00000003:000000000000C8C0       Table
+ 00000003:000000000000C9A0       ContextRecord
+ 00000004:0000000000000000       ExceptionDir
+
+Program entry point at 0001:0000000000030B04

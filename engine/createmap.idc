@@ -7,7 +7,7 @@ static main()
     // Wait for auto-analysis to complete...
     Wait();
 
-    file = fopen(ARGV[1], "w");
+    file = fopen("driver_standable.map", "w");
 
     // Produce MAP file.
     GenerateFile(OFILE_MAP, file, 0, ~0, GENFLG_MAPSEGS | GENFLG_MAPDMNG);
